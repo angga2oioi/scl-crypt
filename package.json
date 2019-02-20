@@ -1,0 +1,16 @@
+{
+  "name": "scl-crypt",
+  "version": "1.0.0",
+  "description": "npm global package cli for encryption & decryption using aes-256-ctr algorithm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "scl-crypt": "./bin/index.js"
+  },
+  "preferGlobal": true,
+  "author": "angga2oioi",
+  "license": "ISC",
+  "dependencies": {}
+}
