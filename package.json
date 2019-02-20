@@ -12,5 +12,13 @@
   "preferGlobal": true,
   "author": "angga2oioi",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angga2oioi/scl-crypt.git"
+  },
+  "bugs": {
+    "url": "https://github.com/angga2oioi/scl-crypt/issues"
+  },
+  "homepage": "https://github.com/angga2oioi/scl-crypt#readme"
 }
