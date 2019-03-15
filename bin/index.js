@@ -12,7 +12,7 @@ argv.forEach(function(v){
     if(split.length==1){
         params[opt]=true;
     }else{
-        params[opt]=split[0]
+        params[opt]=split[1]
     }
 })
 
@@ -23,31 +23,32 @@ if(params.h===true){
 	
 	console.log("Command : ");
 	console.log("\t -h  \t Show this help, no option needed");
-	console.log("\t -e \t encrypt string, require --k and --s argument");
-	console.log("\t -d \t decript string, require --k and --s argument");
+	console.log("\t -e \t encrypt string, require -k and -s argument");
+	console.log("\t -d \t decript string, require -k and -s argument");
 	console.log("\t -el \t encrypt string listed on a txt files, the string must be separated by newline, require --i and --k argument");
 	console.log("\t -dl \t decrypt string listed on a txt files, the string must be separated by newline, require --i and --k argument");
 	
 	
 	console.log(" ");
 	console.log("Options : ");
-	console.log("\t --k \t encryption key");
-	console.log("\t --s \t encrypted/plain string to process");
-	console.log("\t --i \t file location to as input for the -dl and -el command");
+	console.log("\t -k \t encryption key");
+	console.log("\t -s \t encrypted/plain string to process");
+	console.log("\t -i \t file location to as input for the -dl and -el command");
 	console.log("\t -o \t file location to as output for the -dl and -el command, if not set output.txt will be created");
 	
 	console.log(" ");
 	console.log("Example : ");
-	console.log("\t scl-crypt -e --k=mysecretkey -s=myplainstring");
+	console.log("\t scl-crypt -e -k=mysecretkey -s=myplainstring");
+	console.log("\t scl-crypt -e -k=mysecretkey -i=./mylistofstring.txt");
 	return;
 }
 if(params.e===true || params.d ===true){
-	if(!params.k){
-		console.log("invalid --k argument")
+	if(!params.k || typeof params.k!=="string" ){
+		console.log("invalid -k argument")
 		return;
 	}
-	if(!params.s){
-		console.log("invalid --s argument")
+	if(!params.s || typeof params.s!=="string"){
+		console.log("invalid -s argument")
 		return;
 	}
 	if(params.e===true){
@@ -60,12 +61,12 @@ if(params.e===true || params.d ===true){
 	}
 }
 if(params.el===true || params.dl ===true){
-	if(!params.k){
-		console.log("invalid --k argument")
+	if(!params.k || typeof params.k!=="string" ){
+		console.log("invalid -f argument")
 		return;
 	}
-	if(!params.i){
-		console.log("invalid --i argument")
+	if(!params.i || typeof params.i!=="string"){
+		console.log("invalid -i argument")
 		return;
 	}
 	var fpath = params.i;
@@ -73,7 +74,7 @@ if(params.el===true || params.dl ===true){
 	var newList=[];
 	var newString;
 	var output = "./output.txt";
-	if(params.o){
+	if(params.o && typeof params.o==="string"){
 		output = params.o;
 	}
 	fs.readFile(fpath,"utf-8", function(err,text){
