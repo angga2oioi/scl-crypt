@@ -1,19 +1,19 @@
 #!/usr/bin/env node
 
-const lib = require("../index.js");
+const lib = require("./../lib/index.js");
 const fs = require("fs");
 
 var argv =process.argv.slice(2);
 var params={};
 
 argv.forEach(function(v){
-	var temp = v.replace("-","").replace("-","");
-	if(temp.indexOf("=")<0){
-		params[temp] = true;
-	}else{
-		var split = temp.split("=");
-		params[split[0]] = split[1];
-	}
+	let split = v.split("=");
+    let opt = split[0].replace(/-/g,"");
+    if(split.length==1){
+        params[opt]=true;
+    }else{
+        params[opt]=split[0]
+    }
 })
 
 if(params.h===true){
