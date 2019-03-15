@@ -1,6 +1,6 @@
 {
   "name": "scl-crypt",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "npm global package cli for encryption & decryption using aes-256-ctr algorithm",
   "main": "./lib/index.js",
   "scripts": {
